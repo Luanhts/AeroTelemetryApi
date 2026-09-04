@@ -1,0 +1,39 @@
+{
+  "name": "aerotelemetryapi",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Luanhts/AeroTelemetryApi#readme",
+  "bugs": {
+    "url": "https://github.com/Luanhts/AeroTelemetryApi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luanhts/AeroTelemetryApi.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec tsx server.ts",
+    "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
+  "format": "prettier --write \"src/**/*.{ts,js,json}\""
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.69.0"
+  }
+}
