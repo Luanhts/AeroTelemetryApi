@@ -1,7 +1,10 @@
-import express, { type Express, type Request, type Response } from 'express';
+import express from 'express';
 import VehiclesController from '../../controllers/vehiclesController.js';
+import { authenticate } from '../../middlewares/Authenticator.js';
 
 const router = express.Router();
+
+router.use('/vehicles', authenticate);
 
 router.post('/vehicles', VehiclesController.createVehicle);
 router.get('/vehicles', VehiclesController.getVehicles);
