@@ -5,22 +5,22 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    res.status(401).json({ message: 'Token not provided' });
+    res.status(401).json({ message: 'Token não informado' });
     return;
   }
 
   const [scheme, token] = authHeader.split(' ');
 
   if (scheme !== 'Bearer' || !token) {
-    res.status(401).json({ message: 'Invalid token format' });
+    res.status(401).json({ message: 'Formato do token inválido' });
     return;
   }
 
   try {
-    const user = jwt.verify(token, process.env.JWT_SECRET || 'secret_key');
-    res.locals.user = user;
+    const payload = jwt.verify(token, process.env.JWT_SECRET || 'secret_key');
+    res.locals.user = payload;
     next();
   } catch {
-    res.status(401).json({ message: 'Invalid token' });
+    res.status(401).json({ message: 'Token inválido' });
   }
 }
