@@ -1,6 +1,7 @@
 export interface Telemetry {
     id: string;
-    vehicleId: string;
+    sessionId: string;
+
     timestamp: Date;
     speed: number;
     rpm?: number;

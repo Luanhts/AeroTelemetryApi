@@ -5,5 +5,6 @@ export default interface Vehicle {
     name: string;
     type: VehicleType;
     active: boolean;
+    userId: string;
     createdAt: Date;
 }
