@@ -7,4 +7,5 @@ export default interface Vehicle {
     active: boolean;
     userId: string;
     createdAt: Date;
+    updatedAt?: Date;
 }

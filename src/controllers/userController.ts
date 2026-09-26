@@ -1,6 +1,6 @@
 import { type Request, type Response } from 'express';
 import type { User } from '../types/User.js';
-import db from "../db/main.js"
+import db from "../db/connection.js"
 import jwt  from 'jsonwebtoken';
 import bcrypt from "bcryptjs";
 import dotenv from 'dotenv';

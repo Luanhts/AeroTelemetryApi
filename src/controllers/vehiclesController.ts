@@ -1,23 +1,6 @@
 import { type Request, type Response } from 'express';
 import Vehicle from '../types/Vehicle.js';
 
-const mockVehicles: Vehicle[] = [
-  {
-    id: '1',
-    name: 'Boeing 737',
-    type: 'AIRCRAFT',
-    active: true,
-    createdAt: new Date(),
-  },
-  {
-    id: '2',
-    name: 'Airbus A320',
-    type: 'AIRCRAFT',
-    active: false,
-    createdAt: new Date(),
-  },
-];
-
 class VehiclesController {
     static getVehicles = async (req: Request, res: Response): Promise<void> => {
         try {
