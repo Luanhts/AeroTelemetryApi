@@ -69,6 +69,32 @@ export class VehicleController {
 
   async updateVehicle(req: Request, res: Response) {
     try {
+      const userId = res.locals.user.id;
+      const vehicleId = req.params.id as string;
+
+      const { name, type, active } = req.body;
+
+      if (!vehicleId) {
+        return res.status(400).json({
+          message: 'Vehicle ID is required',
+        });
+      }
+
+      const updatedVehicle = await vehicleRepository.updateVehicle(
+        userId,
+        vehicleId,
+        { name, type, active },
+      );
+
+      if (!updatedVehicle) {
+        res.status(404).json({ message: 'Vehicle not found' });
+        return;
+      }
+
+      res.status(200).json({
+        message: 'Vehicle updated successfully',
+        vehicle: updatedVehicle,
+      });
     } catch (error) {
       console.error(error);
 

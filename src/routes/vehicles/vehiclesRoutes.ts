@@ -10,7 +10,7 @@ router.use('/vehicles', authenticate);
 router.post('/vehicles', vehicleController.create);
 router.get('/vehicles', vehicleController.getVehicles);
 router.get('/vehicles/:id', vehicleController.getVehicleById);
-// router.put('/vehicles/:id', vehicleController.updateVehicle);
+router.put('/vehicles/:id', vehicleController.updateVehicle);
 router.delete('/vehicles/:id', vehicleController.deleteVehicle);
 
 export default router;
