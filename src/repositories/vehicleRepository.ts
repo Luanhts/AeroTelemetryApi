@@ -39,9 +39,13 @@ export class VehicleRepository {
     return result.rows[0];
   }
 
-  async updateVehicle(userId: string, vehicleId: string, data: { name?: string; type?: string; active?: boolean }) {
+  async updateVehicle(
+    userId: string,
+    vehicleId: string,
+    data: { name?: string; type?: string; active?: boolean },
+  ) {
     const result = await pool.query(
-    `
+      `
       UPDATE vehicles
       SET 
         name = COALESCE($1, name),
@@ -50,8 +54,8 @@ export class VehicleRepository {
       WHERE id = $4 AND user_id = $5
       RETURNING id, user_id, name, type, active
     `,
-    [data.name, data.type, data.active, vehicleId, userId]
-  );
+      [data.name, data.type, data.active, vehicleId, userId],
+    );
 
     return result.rows[0];
   }
