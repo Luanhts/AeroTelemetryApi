@@ -1,0 +1,1 @@
+export type VehicleType = "RACE_CAR" | "AIRCRAFT";

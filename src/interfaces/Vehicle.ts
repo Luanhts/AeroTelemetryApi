@@ -1,4 +1,4 @@
-type VehicleType = "RACE_CAR" | "AIRCRAFT";
+import { VehicleType } from "../types/VehicleType.js";
 
 export default interface Vehicle {
     id: string;
