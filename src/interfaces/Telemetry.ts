@@ -1,10 +1,17 @@
 export interface Telemetry {
-    id: string;
-    sessionId: string;
+  id: string;
+  sessionId: string;
 
-    timestamp: Date;
-    speed: number;
-    rpm?: number;
-    engineTemperature: number;
-    fuelLevel: number;
+  timestamp: Date;
+  engineTemperature: number;
+  fuelLevel: number;
+  speed: number;
+  altitude: number;
+  latitude: number;
+  longitude: number;
+  acceleration: number;
+  pitch: number;
+  roll: number;
+  yaw: number;
+  throttle: number;
 }
