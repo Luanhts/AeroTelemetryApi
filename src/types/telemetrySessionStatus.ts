@@ -1,0 +1,1 @@
+export type TelemetrySessionStatus = 'ACTIVE' | 'FINISHED' | 'CANCELLED'

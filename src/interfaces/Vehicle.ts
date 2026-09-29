@@ -1,11 +1,10 @@
-import { VehicleType } from "../types/VehicleType.js";
+import { VehicleType } from '../types/VehicleType.js';
 
 export default interface Vehicle {
-    id: string;
-    name: string;
-    type: VehicleType;
-    active: boolean;
-    userId: string;
-    createdAt: Date;
-    updatedAt?: Date;
+  id: string;
+  name: string;
+  type: VehicleType;
+  active: boolean;
+  userId: string;
+  createdAt: Date;
 }
