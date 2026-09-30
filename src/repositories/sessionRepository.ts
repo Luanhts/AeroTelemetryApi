@@ -1,20 +1,17 @@
 import pool from '../db/connection.js';
 
 export class SessionRepository {
-  async create(vehicleId: string, userId: string) {
+  async create(vehicleId: string) {
     const result = await pool.query(
       `
       INSERT INTO telemetry_sessions (
         vehicle_id,
         started_at
       )
-      SELECT id, NOW()
-      FROM vehicles
-      WHERE id = $1
-        AND user_id = $2
-      RETURNING telemetry_sessions.*
+      VALUES ($1, NOW())
+      RETURNING *
       `,
-      [vehicleId, userId],
+      [vehicleId],
     );
 
     return result.rows[0];
@@ -22,13 +19,7 @@ export class SessionRepository {
 
   async getAllSessions(userId: string) {
     const result = await pool.query(
-      `
-      SELECT ts.*
-      FROM telemetry_sessions ts
-      JOIN vehicles v ON v.id = ts.vehicle_id
-      WHERE v.user_id = $1
-      ORDER BY ts.started_at DESC
-      `,
+      `SELECT * FROM telemetry_sessions WHERE user_id = $1`,
       [userId],
     );
 
@@ -37,13 +28,7 @@ export class SessionRepository {
 
   async getSessionById(sessionId: string, userId: string) {
     const result = await pool.query(
-      `
-      SELECT ts.*
-      FROM telemetry_sessions ts
-      JOIN vehicles v ON v.id = ts.vehicle_id
-      WHERE ts.id = $1
-        AND v.user_id = $2
-      `,
+      `SELECT * FROM telemetry_sessions WHERE id = $1 AND user_id = $2`,
       [sessionId, userId],
     );
 
@@ -53,12 +38,9 @@ export class SessionRepository {
   async getByVehicleId(userId: string, vehicleId: string) {
     const result = await pool.query(
       `
-      SELECT ts.*
-      FROM telemetry_sessions ts
-      JOIN vehicles v ON v.id = ts.vehicle_id
-      WHERE ts.vehicle_id = $1
-        AND v.user_id = $2
-      ORDER BY ts.started_at DESC
+      SELECT *
+      FROM telemetry_sessions WHERE vehicle_id = $1 AND user_id = $2
+      ORDER BY started_at DESC
       `,
       [vehicleId, userId],
     );
@@ -68,14 +50,7 @@ export class SessionRepository {
 
   async deleteSession(userId: string, sessionId: string) {
     const result = await pool.query(
-      `
-      DELETE FROM telemetry_sessions ts
-      USING vehicles v
-      WHERE ts.id = $1
-        AND ts.vehicle_id = v.id
-        AND v.user_id = $2
-      RETURNING ts.*
-      `,
+      `DELETE FROM telemetry_sessions WHERE id = $1 AND user_id = $2`,
       [sessionId, userId],
     );
 
@@ -87,8 +62,7 @@ export class SessionRepository {
       `
     UPDATE telemetry_sessions ts
 
-    SET ended_at = NOW(),
-        status = 'FINISHED'
+    SET ended_at = NOW()
 
     FROM vehicles v
 
