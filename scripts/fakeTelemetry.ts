@@ -1,9 +1,8 @@
 const API_URL = 'http://localhost:3000';
 
-const SESSION_ID = '3a49f384-58a4-4f0f-b6e6-8781179a13eb';
+const SESSION_ID = 'c42c7a39-ffc4-41fc-a76e-6e8a4ec62d6b';
 
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJlbWFpbCI6Imx1YW5AZ21haWwuY29tIiwiaWF0IjoxNzkwNzI0MjEyLCJleHAiOjE3OTA3Mjc4MTJ9.W7BKd_18BLZ0Bb5fyygjC6B1aBlxeecFjg91HpcbQ9k';
+const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJlbWFpbCI6Imx1YW5AZ21haWwuY29tIiwiaWF0IjoxNzkwODY3NDIxLCJleHAiOjE3OTA4NzEwMjF9.44lV_dIMKC6FNdAMXvsSpd6EIV_SFIKFbmsfrTFGgv8';
 
 interface FakeTelemetry {
   recordedAt: string;
